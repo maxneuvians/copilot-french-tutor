@@ -1,2 +1,1 @@
-# go-starter
-Go devcontainer starter
+# Copilot (GPT-4) french tutor
