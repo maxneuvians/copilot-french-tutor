@@ -38,7 +38,7 @@ func New() Model {
 	}
 
 	m.spinner.Style = lipgloss.NewStyle().Foreground(lipgloss.Color("205"))
-	m.spinner.Spinner = spinner.Pulse
+	m.spinner.Spinner = spinner.Meter
 
 	m.ta.Placeholder = "Ask your questions about french grammar here. Press enter to send."
 	m.ta.Focus()
@@ -131,11 +131,11 @@ func renderChatLine(msg *chatMsg) string {
 
 	switch msg.role {
 	case "user":
-		return userStyle.Render("["+msg.timestamp.Format("02 Jan 06 15:04:05 MST")+"] You: ") + msg.content + "\n"
+		return userStyle.Render("["+msg.timestamp.Format("02 Jan 06 15:04:05 MST")+"] You: ") + msg.content + "\n\n"
 	case "system":
 		return ""
 	case "assistant":
-		return assistantStyle.Render("["+msg.timestamp.Format("02 Jan 06 15:04:05 MST")+"] Assistant: ") + msg.content + "\n"
+		return assistantStyle.Render("["+msg.timestamp.Format("02 Jan 06 15:04:05 MST")+"] Assistant: ") + msg.content + "\n\n"
 	}
 	return ""
 }

@@ -54,7 +54,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, tea.Quit
 		}
 
-		if msg.String() == "f2" {
+		if msg.String() == "f2" && m.panes[consts.LoginPane].(loginpane.Model).GetSessionState() == consts.LoggedIn {
 			m.activePane = consts.ChatPane
 		}
 
@@ -67,6 +67,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	//cmds = append(cmds, cmd)
 
 	for k, v := range m.panes {
+		// Do not send key messages to inactive panes
+		if _, ok := msg.(tea.KeyMsg); ok {
+			if k != m.activePane {
+				continue
+			}
+		}
+
 		m.panes[k], cmd = v.Update(msg)
 		cmds = append(cmds, cmd)
 	}
