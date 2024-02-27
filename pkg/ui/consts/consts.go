@@ -1,4 +1,4 @@
-package pkg
+package consts
 
 const (
 	// File names
@@ -15,3 +15,11 @@ const (
 	LoggingIn = "Logging in"
 	LoggedOut = "Logged out"
 )
+
+// Global message types
+type InitializingMsg bool
+type SessionUpdateMsg struct {
+	AccessToken string
+	State       string
+}
+type SessionTokenUpdateMsg string

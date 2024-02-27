@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/charmbracelet/bubbles/timer"
+	"github.com/charmbracelet/bubbles/viewport"
 	tea "github.com/charmbracelet/bubbletea"
 	proxy "github.com/maxneuvians/go-copilot-proxy/pkg"
 )
@@ -17,6 +18,7 @@ type logMessage struct {
 type Model struct {
 	accessToken   string
 	activePane    string
+	chatMessages  []proxy.Message
 	height        int
 	lastPane      string
 	loginResponse proxy.LoginResponse
@@ -32,7 +34,14 @@ func InitialModel() Model {
 	m := Model{
 		activePane: LoginPane,
 		loginTimer: timer.NewWithInterval(2*time.Minute, time.Second),
+		pane: pane{
+			viewport: viewport.Model{},
+		},
 	}
+
+	// Disable the mouse
+	m.pane.viewport.MouseWheelEnabled = false
+	m.pane.viewport.HighPerformanceRendering = false
 
 	m.addLogMessage("Initializing...")
 	setSessionState(&m)
@@ -50,6 +59,8 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		cmds []tea.Cmd
 	)
 
+	//m.addLogMessage(fmt.Sprintf("Received message: %T", msg))
+
 	switch msg := msg.(type) {
 
 	case tea.KeyMsg:
@@ -64,17 +75,41 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
 		m.height = msg.Height
+
+		// Set the dimensions
+		m.pane.viewport.Width = msg.Width
+		m.pane.viewport.Height = msg.Height
+
+		m.pane.viewport, cmd = m.pane.viewport.Update(msg)
+		cmds = append(cmds, cmd)
+
+	case chatMsg:
+		m.chatMessages = append(m.chatMessages, proxy.Message{Content: string(msg), Role: "assistant"})
+		m.pane.loading = false
+		m.pane.textarea.Reset()
 	}
 
-	renderPane(&m, msg)
-	m.pane.viewport, cmd = m.pane.viewport.Update(msg)
+	cmd = renderPane(&m, msg)
 	cmds = append(cmds, cmd)
+
+	if m.activePane == ChatPane {
+		m.pane.textarea, cmd = m.pane.textarea.Update(msg)
+		cmds = append(cmds, cmd)
+
+		if m.pane.loading {
+			m.pane.spinner, cmd = m.pane.spinner.Update(msg)
+			cmds = append(cmds, cmd)
+		}
+
+		m.pane.display, cmd = m.pane.display.Update(msg)
+		cmds = append(cmds, cmd)
+	}
 
 	return m, tea.Batch(cmds...)
 }
 
 func (m Model) View() string {
-	return fmt.Sprintf("%s\n%s", m.pane.viewport.View(), m.renderStatusBar())
+	return fmt.Sprintf("%s\n%s", m.renderStatusBar(), m.pane.viewport.View())
 }
 
 func (m *Model) addLogMessage(content string) {
