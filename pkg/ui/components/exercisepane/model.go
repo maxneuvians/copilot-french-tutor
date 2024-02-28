@@ -69,6 +69,10 @@ func New() Model {
 	m.ti = textinput.New()
 	m.ti.CharLimit = 280
 
+	m.spinner = spinner.New()
+	m.spinner.Style = lipgloss.NewStyle().Foreground(lipgloss.Color("205"))
+	m.spinner.Spinner = spinner.Points
+
 	return m
 }
 
@@ -100,26 +104,30 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.KeyMsg:
 		if msg.String() == "enter" {
 			if len(m.exercises) > 0 {
-				want := m.exercises[m.exerciseIdx]["answer"]
-				got := m.ti.Value()
-				if want == got {
-					m.feedback = "Correct!"
+				if m.feedback != "" {
+					m.feedback = ""
+					m.exerciseIdx++
+					if m.exerciseIdx >= len(m.exercises) {
+						m.exercises = nil
+					}
+					m.ti.SetValue("")
 				} else {
-					m.feedback = fmt.Sprintf("Incorrect. The correct answer is: %s, you wrote: %s", want, got)
+					want := m.exercises[m.exerciseIdx]["answer"]
+					got := m.ti.Value()
+					if want == got {
+						m.feedback = "Correct!"
+					} else {
+						m.feedback = fmt.Sprintf("Incorrect. The correct answer is: %s, you wrote: %s", want, got)
+					}
 				}
-				m.exerciseIdx++
-				if m.exerciseIdx >= len(m.exercises) {
-					m.exercises = nil
-				}
-
-				m.ti.SetValue("")
 				return m, nil
 			}
+			m.loading = true
 			selectionID, _ := strconv.Atoi(m.table.SelectedRow()[0])
 			selectionID--
 			m.selectedPrompt = prompts[selectionID]
 			m.ti.Focus()
-			cmds = append(cmds, m.sendExerciseRequest())
+			cmds = append(cmds, m.sendExerciseRequest(), m.spinner.Tick)
 		}
 
 	case tea.WindowSizeMsg:
@@ -135,16 +143,25 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.height = msg.Height
 	}
 
-	m.table, cmd = m.table.Update(msg)
-	cmds = append(cmds, cmd)
+	if m.loading {
+		m.spinner, cmd = m.spinner.Update(msg)
+		cmds = append(cmds, cmd)
+	} else {
+		m.table, cmd = m.table.Update(msg)
+		cmds = append(cmds, cmd)
 
-	m.ti, cmd = m.ti.Update(msg)
-	cmds = append(cmds, cmd)
+		m.ti, cmd = m.ti.Update(msg)
+		cmds = append(cmds, cmd)
+	}
 
 	return m, tea.Batch(cmds...)
 }
 
 func (m Model) View() string {
+	if m.loading {
+		return m.spinner.View()
+	}
+
 	if len(m.exercises) > 0 {
 		return m.renderExercise(m.exerciseIdx)
 	}
@@ -189,7 +206,6 @@ func (m *Model) sendExerciseRequest() tea.Cmd {
 			Content: `You are a system that generates simple quiz questions for french grammar in the context of working in the Canadian government. 
 				For example you could be asked, 'Generate five questions that test the students understanding of the verb aller in the past tense'
 				You provide your question in a json format. 
-				The format should look like this: {"question": "je (aller) à la plage.", "answer": "suis allé", "translation": "I went to the beach"} 
 				If you are returning multiple questions, please use a JSON array. 
 				Your response should be valid JSON that is minized.`,
 		})
