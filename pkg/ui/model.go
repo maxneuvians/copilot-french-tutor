@@ -4,6 +4,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/maxneuvians/copilot-french-tutor/pkg/ui/components/chatpane"
+	"github.com/maxneuvians/copilot-french-tutor/pkg/ui/components/exercisepane"
 	"github.com/maxneuvians/copilot-french-tutor/pkg/ui/components/loginpane"
 	"github.com/maxneuvians/copilot-french-tutor/pkg/ui/components/statusbar"
 	"github.com/maxneuvians/copilot-french-tutor/pkg/ui/consts"
@@ -24,6 +25,7 @@ func New() Model {
 	}
 
 	m.panes[consts.ChatPane] = chatpane.New()
+	m.panes[consts.ExercisePane] = exercisepane.New()
 	m.panes[consts.LoginPane] = loginpane.New()
 
 	m.activePane = consts.LoginPane
@@ -56,6 +58,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		if msg.String() == "f2" && m.panes[consts.LoginPane].(loginpane.Model).GetSessionState() == consts.LoggedIn {
 			m.activePane = consts.ChatPane
+		}
+
+		if msg.String() == "f3" && m.panes[consts.LoginPane].(loginpane.Model).GetSessionState() == consts.LoggedIn {
+			m.activePane = consts.ExercisePane
 		}
 
 	case tea.WindowSizeMsg:

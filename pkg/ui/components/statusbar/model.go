@@ -69,16 +69,18 @@ func (m Model) View() string {
 	w := lipgloss.Width
 
 	chatButton := buttonStyle.Render("F2: Chat")
+	exerciseButton := buttonStyle.Render("F3: Exercises")
 
 	exitButton := exitButtonStyle.Render("F9: Quit")
 	sessionState := sessionStateStyle.Render("🍥 " + m.sessionState)
 
 	filler := buttonText.Copy().
-		Width(m.width - w(chatButton) - w(exitButton) - w(sessionState)).
+		Width(m.width - w(chatButton) - w(exerciseButton) - w(exitButton) - w(sessionState)).
 		Render("")
 
 	bar := lipgloss.JoinHorizontal(lipgloss.Top,
 		chatButton,
+		exerciseButton,
 		filler,
 		exitButton,
 		sessionState,

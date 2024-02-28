@@ -5,10 +5,10 @@ const (
 	TokenFile = ".github_copilot_token"
 
 	// Panes
-	ChatPane  = "Chat"
-	LoginPane = "Login"
-	LogsPane  = "Logs"
-	QuizPane  = "Quiz"
+	ChatPane     = "Chat"
+	ExercisePane = "Exercise"
+	LoginPane    = "Login"
+	QuizPane     = "Quiz"
 
 	// Session states
 	LoggedIn  = "Logged in"
