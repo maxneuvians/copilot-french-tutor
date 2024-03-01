@@ -207,7 +207,9 @@ func (m *Model) sendExerciseRequest() tea.Cmd {
 				For example you could be asked, 'Generate five questions that test the students understanding of the verb aller in the past tense'
 				You provide your question in a json format. 
 				If you are returning multiple questions, please use a JSON array. 
-				Your response should be valid JSON that is minized.`,
+				Your response should be valid JSON that is minized. 
+				Please validate that the answers form gramatically correct sentences when inserted into the sentences.
+				`,
 		})
 
 		chatMessages = append(chatMessages, proxy.Message{
@@ -215,7 +217,11 @@ func (m *Model) sendExerciseRequest() tea.Cmd {
 			Content: m.selectedPrompt.prompt,
 		})
 
-		resp, err := proxy.Chat(m.sessionToken, chatMessages, false)
+		var resp string
+		err := proxy.Chat(m.sessionToken, chatMessages, false, func(cr proxy.CompletionResponse) error {
+			resp = cr.Choices[0].Message.Content
+			return nil
+		})
 
 		if err != nil {
 			return exerciseResponse("Error sending chat messages.")

@@ -148,7 +148,11 @@ func (m *Model) sendChatMessages() tea.Cmd {
 			chatMessages = append(chatMessages, proxy.Message{Content: msg.content, Role: msg.role})
 		}
 
-		resp, err := proxy.Chat(m.sessionToken, chatMessages, false)
+		var resp string
+		err := proxy.Chat(m.sessionToken, chatMessages, false, func(cr proxy.CompletionResponse) error {
+			resp = cr.Choices[0].Message.Content
+			return nil
+		})
 
 		if err != nil {
 			return chatResponse("Error sending chat messages.")

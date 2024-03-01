@@ -44,6 +44,13 @@ var (
 			`,
 		},
 		{
+			name: "Verb Aller (Future simple)",
+			prompt: `
+				Generate five questions that test the students understanding of the verb aller in the future simple tense.
+				The format should look like this: {"question": "je (aller) à la plage.", "answer": "irai", "translation": "I'll go to the beach"}
+			`,
+		},
+		{
 			name: "Verb Aller (Present Tense)",
 			prompt: `
 				Generate five questions that test the students understanding of the verb aller in the present tense. 
@@ -58,10 +65,10 @@ var (
 			`,
 		},
 		{
-			name: "Verb Aller (Future simple)",
+			name: "Verb Etre (Future Simple)",
 			prompt: `
-				Generate five questions that test the students understanding of the verb aller in the future simple tense.
-				The format should look like this: {"question": "je (aller) à la plage.", "answer": "irai", "translation": "I'll go to the beach"}
+				Generate five questions that test the students understanding of the verb être in the future simple tense.
+				The format should look like this: {"question": "je (être) à la plage.", "answer": "serai", "translation": "I'll be at the beach"}
 			`,
 		},
 	}
