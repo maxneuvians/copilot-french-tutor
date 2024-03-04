@@ -69,7 +69,7 @@ func (m Model) View() string {
 	w := lipgloss.Width
 
 	chatButton := buttonStyle.Render("F2: Chat")
-	exerciseButton := buttonStyle.Render("F3: Exercises")
+	exerciseButton := buttonStyle.Render("F4: Exercises")
 
 	exitButton := exitButtonStyle.Render("F9: Quit")
 	sessionState := sessionStateStyle.Render("🍥 " + m.sessionState)

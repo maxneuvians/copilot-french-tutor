@@ -1,6 +1,12 @@
 # Description: Makefile for the project
 
 dev:
-	@go run ./cmd/main.go
+	@go run ./cmd/ui/main.go
 
-.PHONY: dev
+gen:
+	@go run ./cmd/generator/main.go
+
+validate:
+	@go run ./cmd/validator/main.go
+
+.PHONY: dev gen validate
