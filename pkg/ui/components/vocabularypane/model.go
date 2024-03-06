@@ -70,7 +70,7 @@ func New() Model {
 		m.words[i], m.words[j] = m.words[j], m.words[i]
 	})
 
-	m.drillList = m.words[:10]
+	m.drillList = m.words
 
 	return m
 }
@@ -95,6 +95,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					m.drillList = m.redoList
 					m.redoList = nil
 					m.wordIdx = 0
+				}
+				if len(m.drillList) == 0 {
+					return m, tea.Quit
 				}
 				m.ti.SetValue("")
 			} else {
