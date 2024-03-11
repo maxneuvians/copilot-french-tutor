@@ -1,0 +1,354 @@
+[
+
+    {
+        "id": 53,
+        "question": "La première étape pour prévenir et __________________ la violence en milieu de travail est de comprendre les différents types d’événements qui peuvent être jugés violents. Ce n’est pas aussi facile qu’on pourrait le penser.",
+        "answers": [
+            "nier",
+            "rayer",
+            "étouffer",
+            "enrayer"
+        ]
+    },
+    {
+        "id": 52,
+        "question": "________________ que je sache, nous ne sommes pas responsables de ce problème d’impression",
+        "answers": [
+            "Pour",
+            "Pour autant",
+            "À ma connaissance",
+            "Aussi loin"
+        ]
+    },
+    {
+        "id": 51,
+        "question": "Pour lui, il s'agit d'une ______________ à la vie privée.",
+        "answers": [
+            "a teinte",
+            "atteinte",
+            "ateinte",
+            "attainte"
+        ]
+    },
+    {
+        "id": 50,
+        "question": "Il faudra évaluer les dépenses ________________ par cette initiative.",
+        "answers": [
+            "encourrues",
+            "ancourrues",
+            "en courues",
+            "encourues"
+        ]
+    },
+    {
+        "id": 49,
+        "question": "C'est à vous de veiller à ce que le travail ________________ à temps.",
+        "answers": [
+            "termine",
+            "a terminé",
+            "est terminé",
+            "soit terminé"
+        ]
+    },
+    {
+        "id": 48,
+        "question": "Nous avons dû prendre la décision ______________.",
+        "answers": [
+            "sur-le-champ",
+            "dans-le-champ",
+            "avec le champ",
+            "pour le champ"
+        ]
+    },
+    {
+        "id": 47,
+        "question": "Nous vous invitons ________________ ces services en tout temps.",
+        "answers": [
+            "à prévaloir sur",
+            "à vous prévaloir de",
+            "à vous valoir",
+            "à te prévaloir de"
+        ]
+    },
+    
+    {
+        "id": 46,
+        "question": "Comment le problème ______________?",
+        "answers": [
+            "s'est-il résolu",
+            "s'est-il travaillé",
+            "s'est-elle résolue",
+            "s'est-il résolvé"
+        ]
+    },
+    {
+        "id": 32,
+        "question": "Vous n’êtes pas autorisé ________________ prendre ce genre de décisions.",
+        "answers": [
+            "à",
+            "de",
+            "par",
+            "pour"
+        ]
+    },
+    {
+        "id": 31,
+        "question": "Vous ________________ du fait que ce projet sera très couteux et passablement inutile.",
+        "answers": [
+            "devriez tenir le compte",
+            "devez tenez compte",
+            "auriez du tenir compte",
+            "devez tenir compte"
+        ]
+    },
+    {
+        "id": 30,
+        "question": "Êtes-vous d’accord avec les récentes politiques de notre ministère concernant les toutes dernières ________________.",
+        "answers": [
+            "réductions des positions",
+            "coupures de postes",
+            "compressions de personnel",
+            "abolitions de staff"
+        ]
+    },
+    {
+        "id": 29,
+        "question": "Pensez-vous que ça ________________ la peine d’embaucher une personne pour une si courte période de temps?",
+        "answers": [
+            "veuille",
+            "vaille",
+            "soit",
+            "veut"
+        ]
+    },
+    {
+        "id": 28,
+        "question": "Sortez quand ________________.",
+        "answers": [
+            "vous serez finis",
+            "vous êtes finis",
+            "vous aurez fini",
+            "vous aurez été finis"
+        ]
+    },
+    {
+        "id": 27,
+        "question": "________________, j’ai téléphoné à Zabulon.",
+        "answers": [
+            "En retourner dans mon bureau",
+            "De retour à mon bureau",
+            "Revenu à mon office",
+            "Au retour dans mon bureau"
+        ]
+    },
+    {
+        "id": 26,
+        "question": "Excusez-moi ________________ fait attendre.",
+        "answers": [
+            "de vous avoir",
+            "vous avoir",
+            "pour avoir vous",
+            "d’avoir vous"
+        ]
+    },
+    {
+        "id": 25,
+        "question": "On embauchera _______________ économiste cette année.",
+        "answers": [
+            "un nouveau",
+            "un nouvel",
+            "un nouvelle",
+            "une nouveau"
+        ]
+    },
+    {
+        "id": 24,
+        "question": "Ils ont fait leurs profits grâce à la vente de produits ______________.",
+        "answers": [
+            "dérivés",
+            "dérivants",
+            "derrivés",
+            "derrivants"
+        ]
+    },
+    {
+        "id": 23,
+        "question": "Ils ______________ s'assurer de ne pas contrevenir aux lois sur la concurrence.",
+        "answers": [
+            "auraient dû",
+            "auraient du",
+            "auraient due",
+            "auraient dut"
+        ]
+    },
+    {
+        "id": 22,
+        "question": "Vous devez savoir qu'elle n'a pas _________________ des personnes de moins de seize ans dans ce rapport.",
+        "answers": [
+            "tenu compte",
+            "tenue compte",
+            "tenu à compter",
+            "tenue le compte"
+        ]
+    },
+    {
+        "id": 21,
+        "question": "Si nous ne passons pas une commande d'ici peu, je crains que ________________ de papier pour les imprimantes de l'étage.",
+        "answers": [
+            "nous manquons",
+            "nous manquerons",
+            "nous manquions",
+            "nous manquerions"
+        ]
+    },
+    {
+        "id": 20,
+        "question": "Ils ________________ de notre mise en demeure hier.",
+        "answers": [
+            "ont chargé réception",
+            "ont accusé réception",
+            "ont accusé le reçu",
+            "ont reçu"
+        ]
+    },
+    {
+        "id": 19,
+        "question": "Je ________________ que l'ordre du jour avait été établi par les deux parties.",
+        "answers": [
+            "lui ai rappelé",
+            "l'ai rappelé",
+            "m'ai rappelé",
+            "rappelle à lui"
+        ]
+    },
+    {
+        "id": 18,
+        "question": "Si cette politique est adoptée telle quelle, elle ________________ une augmentation des dépenses pour ce ministère.",
+        "answers": [
+            "aura entraîné",
+            "entraînera",
+            "entraînerait",
+            "aurait entraîné"
+        ]
+    },
+    {
+        "id": 17,
+        "question": "La note de frais ________________ par le service des finances.",
+        "answers": [
+            "sera payé",
+            "sera réglée",
+            "sera réglé",
+            "seront réglées"
+        ]
+    },
+    {
+        "id": 16,
+        "question": "Notre directrice nous rencontrera dès qu’elle ______________ de sa rencontre avec le sous-ministre.",
+        "answers": [
+            "sera revenue",
+            "sera revenu",
+            "sera retourné",
+            "sera retournée"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "Ils nous ont promis ______________ à haute vitesse.",
+        "answers": [
+            "une branche",
+            "une branchement",
+            "une connexion",
+            "une connection"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "Mon patron? _________________ plusieurs fois de me procurer un meilleur fauteuil pour le travail.",
+        "answers": [
+            "J'ai lui demandé",
+            "Je lui ai demandé",
+            "Je l’ai demandé",
+            "J'ai demandé à lui"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "Il ________________ l'affaire avec tact.",
+        "answers": [
+            "a agi",
+            "s'est occupé",
+            "a manipulé",
+            "a traité"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "________________ à votre question, sachez que je suis tout à fait d'accord avec vous sur ce point.",
+        "answers": [
+            "En retour",
+            "En réponse",
+            "En répondant",
+            "En réplique"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "Assure-toi de vérifier la date _________________ de chaque commande.",
+        "answers": [
+            "de livraison",
+            "délivraison",
+            "de délivraison",
+            "de livraisson"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Il ________________ le président de la réunion.",
+        "answers": [
+            "a déplacé",
+            "a replacé",
+            "a remplacé",
+            "a joué"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Dites-moi si je peux vous ________________.",
+        "answers": [
+            "avoir utile",
+            "soyez utile",
+            "être utile",
+            "être utilisé"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Ce courriel, _______________ faut-il l'envoyer?",
+        "answers": [
+            "quelle adresse",
+            "à quelle adresse",
+            "à quel adresse",
+            "quel adresse"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Madeleine? Elle _______________. Elle est en train de traduire la présentation de la semaine prochaine.",
+        "answers": [
+            "a occupé",
+            "s'occupe",
+            "s'est occupée",
+            "est occupée"
+        ]
+    },
+    {
+        "id": 1,
+        "question": "Il a refusé ______________ nos offres.",
+        "answers": [
+            "tous",
+            "tout",
+            "toute",
+            "toutes"
+        ]
+    }
+]
