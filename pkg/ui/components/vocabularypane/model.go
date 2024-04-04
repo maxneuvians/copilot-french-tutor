@@ -22,8 +22,10 @@ type Model struct {
 	drillList []word
 	feedback  string
 	height    int
+	incorrect int
 	redoList  []word
 	ti        textinput.Model
+	total     int
 	width     int
 	wordIdx   int
 	words     []word
@@ -31,6 +33,8 @@ type Model struct {
 
 func New() Model {
 	m := Model{
+		incorrect: 0,
+		total:   0,
 		wordIdx: 0,
 		words:   make([]word, 0),
 	}
@@ -71,6 +75,7 @@ func New() Model {
 	})
 
 	m.drillList = m.words
+	m.total = len(m.drillList)
 
 	return m
 }
@@ -95,6 +100,8 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					m.drillList = m.redoList
 					m.redoList = nil
 					m.wordIdx = 0
+					m.incorrect = 0
+					m.total = len(m.drillList)
 				}
 				if len(m.drillList) == 0 {
 					return m, tea.Quit
@@ -106,6 +113,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				if want == got {
 					m.feedback = "Correct!"
 				} else {
+					m.incorrect++
 					m.redoList = append(m.redoList, m.drillList[m.wordIdx])
 					m.feedback = fmt.Sprintf("Incorrect. The correct answer is: %s, you wrote: %s", want, got)
 				}
@@ -134,11 +142,17 @@ func (m *Model) renderExercise() string {
 
 		Word: %s / %s
 		
-		Your answer: %s`,
+		Your answer: %s
+		
+		
+		(%d/%d) %.2f%% correct`,
 		renderFeedbackStyle(m.feedback),
 		m.drillList[m.wordIdx].English,
 		m.drillList[m.wordIdx].German,
 		m.ti.View(),
+		m.wordIdx+1,
+		m.total,
+		calculatePercentage(m.incorrect, m.wordIdx),
 	)
 
 	return lipgloss.Place(m.width, m.height/2,
@@ -153,4 +167,11 @@ func renderFeedbackStyle(feedback string) string {
 	} else {
 		return lipgloss.NewStyle().Foreground(lipgloss.Color("#ff0000")).Render(feedback)
 	}
+}
+
+func calculatePercentage(incorrect int, idx int) float64 {
+	if idx == 0 {
+		return float64(0)
+	}
+	return float64(idx+1-incorrect) / float64(idx+1) * 100
 }
